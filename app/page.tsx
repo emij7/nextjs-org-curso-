@@ -33,6 +33,7 @@ export default function Page() {
           {/* Add Hero Images Here */}
           <Image
             src="/hero-desktop.png"
+            //This is the maximum image size that will be rendered on the page
             width={1000}
             height={760}
             className="hidden md:block"
