@@ -1,13 +1,14 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useDebouncedCallback } from "use-debounce";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
 
-  const handleSearch = (search: string) => {
+  const handleSearch = useDebouncedCallback((search: string) => {
     const params = new URLSearchParams(searchParams);
     if (search) {
       params.set("query", search);
@@ -18,7 +19,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     // console.log(pathname);
     // params.toSring is a method that returns a string representation of the search params
     replace(`${pathname}?${params.toString()}`);
-  };
+  }, 300);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
