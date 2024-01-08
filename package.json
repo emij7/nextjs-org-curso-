@@ -5,6 +5,7 @@
     "dev": "next dev",
     "start": "next start",
     "seed": "node -r dotenv/config ./scripts/seed.js",
+    "seedColumns": "node -r dotenv/config ./scripts/seedColumns.js",
     "lint": "next lint"
   },
   "dependencies": {
